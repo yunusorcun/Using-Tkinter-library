@@ -44,6 +44,26 @@ def checkbutton_selected():
 check_state = IntVar() # check buttton seçldiyse 1 seçilmediyse 0 verir.
 my_checkbutton=Checkbutton(text="Check",variable=check_state, command=checkbutton_selected)
 my_checkbutton.pack()
+#Using Radio
+def radio_selected():
+    print(radio_state.get())
+radio_state=IntVar()
+my_radiobutton=Radiobutton(text="1. option",value=10,variable=radio_state,command=radio_selected)
+my_radiobutton2=Radiobutton(text="2. option",value=5,variable=radio_state,command=radio_selected)
+my_radiobutton.pack()
+my_radiobutton2.pack()
+
+#listbox
+#herhangi bir listeyi kullanıcıya daha düzgün göstermeyi sağlıyor.
+def listbox_selected(event):
+    print(my_listbox.get(my_listbox.curselection()))
+
+my_listbox=Listbox()
+name_list=["Mercedes","BMW","Audi","Toyota","Tesla"]
+for i in range(len(name_list)):
+    my_listbox.insert(i,name_list[i])
+my_listbox.bind('<<ListboxSelect>>',listbox_selected)
+my_listbox.pack()
 
 window.mainloop()
 
